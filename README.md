@@ -8,15 +8,16 @@ xwapp
 文件结构和说明如下：
 
 wxapp
-|
 --bootstrap     bootstrap前端demo
 --bs3           bootstrap3前端demo
-|
+
 --iqtest
 --eqtest
 --agetest       三个测试应用，这三个应用已经在一周内拿到40万UIP
-|
+
 --xznb          抽奖应用
-|
+
 --static        静态文件
 --site-packages python第三方包
+
+
