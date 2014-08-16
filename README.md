@@ -21,4 +21,7 @@ wxapp
 --static        静态文件
 --site-packages python第三方包
 
+--index.wsgi
+--manage.py  	django支持文件
+
 
