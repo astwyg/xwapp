@@ -1,0 +1,29 @@
+{% extends 'agetest/mybase.html' %}
+
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+	经测试，我的心理年龄是{{score}}岁，你要不要测一测？
+{% endblock %}
+
+{% block content %}
+	{% if showAD %}
+	<div class="textwidget">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- phone -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:320px;height:50px"
+		     data-ad-client="ca-pub-0250471959514433"
+		     data-ad-slot="6249182437"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	{%endif%}
+	<br />
+	<p>
+	<img src="/static/image/result.gif" widht="95%">
+	</p>
+
+{% endblock %}

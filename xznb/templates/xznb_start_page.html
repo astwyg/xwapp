@@ -1,0 +1,23 @@
+{% extends 'xznb_base.html' %}
+
+
+{% load bootstrap3 %}
+
+
+
+{% block content %}
+	<div align="center"> 
+	<br />
+	<img src="/static/image/ibjd.jpg" align="center">
+	<br />
+	<form role="form" class="form-horizontal" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="action" value="start">
+		{% buttons submit='开始抽奖！'  layout='horizontal' %}{% endbuttons %}
+	</form>
+	</div>
+	
+
+{% endblock %}
+
+

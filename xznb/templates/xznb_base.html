@@ -1,0 +1,82 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+	送包啦！
+{% endblock %}
+
+{% block bootstrap3_extra_head %}
+	<link REL="SHORTCUT ICON" type="image/gif" href="/static/image/jiang.jpg">
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?d2c2042ec1858c61e0c1cac46f3a9903";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+{% endblock %}
+
+{% block bootstrap3_content %}
+	<img width="500" height="500" style="position:absolute;top:-10000px;" src="http://fronttest.sinaapp.com/static/image/jiang.jpg">
+	<div align="right">
+		 <a href="/discount_about" style="color:gray">我也要创建抽奖活动！</a>
+	</div>
+    <div class="container">
+    	</br>
+        {% bootstrap_messages %}
+
+		{% block content %}
+		{% endblock %}
+    </div>
+
+    <script type="text/javascript" src="/static/js/WeixinApi1.js"></script>
+	<script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?91f4361e83cf34ffe3b6dd0471ee205a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+        window.wxData = {
+            "appId": "", // 服务号可以填写appId
+            "imgUrl":'http://fronttest.sinaapp.com/static/image/jiang.jpg',
+            "link":'http://fronttest.sinaapp.com/xznb/',
+            "desc":"西子女包微信史上最给力抽奖活动，女包全场免单！",
+            "title":"送包啦！"
+        };
+        window.wxFriend = {
+            "appId": "", // 服务号可以填写appId
+            "imgUrl":'http://fronttest.sinaapp.com/static/image/jiang.jpg',
+            "link":'http://fronttest.sinaapp.com/xznb/',
+            "desc":"西子女包微信史上最给力抽奖活动，女包全场免单！",
+            "title":"送包啦！"
+        };
+        WeixinApi.ready(function(Api) {
+            var wxCallbacks = {
+                ready : function() {
+                },
+                cancel : function(resp) {
+                },
+                fail : function(resp) {
+                },
+                confirm : function(resp) {
+                	window.open("/wxconfirm");
+                },
+                all : function(resp) {
+                }
+            };
+            Api.shareToFriend(wxFriend, wxCallbacks);
+            Api.shareToTimeline(wxData, wxCallbacks);
+            Api.shareToWeibo(wxData, wxCallbacks);
+        });
+    </script>
+{% endblock %}
+
+

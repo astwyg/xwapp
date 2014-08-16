@@ -1,0 +1,30 @@
+{% extends 'eqtest/mybase.html' %}
+
+
+{% load bootstrap3 %}
+
+
+
+{% block content %}
+	<br />
+	<h2> 史上最准情商测试 </h2>
+	<form role="form" class="form-horizontal" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="action" value="start">
+		</br>
+		<div class="btn-group">
+				<button  type="submit" class="btn btn-primary" ><i class="icon white user"></i> 开始测试！</button >
+          		<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<li><a href="/iqtest"><i class="icon-pencil"></i> 史上最准智商测试</a></li>
+          			<li><a href="/eqtest"><i class="icon-trash"></i> 史上最准情商测试</a></li>
+          			<li><a href="/agetest"><i class="icon-ban-circle"></i> 史上最准心理年龄测试</a></li>
+          			<li class="divider"></li>
+          			<li><a href="http://www.ysgh.net/archives/577"><i class="i"></i> 访问博客 </a></li>
+          		</ul>
+          	</div>
+	</form>
+
+{% endblock %}
+
+

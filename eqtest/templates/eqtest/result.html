@@ -1,0 +1,29 @@
+{% extends 'eqtest/mybase.html' %}
+
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+	我在史上最准情商测试中拿到{{score}}分(满分174分)，不服来战！
+{% endblock %}
+
+{% block content %}
+	{% if showAD %}
+	<div class="textwidget">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- phone -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:320px;height:50px"
+		     data-ad-client="ca-pub-0250471959514433"
+		     data-ad-slot="6249182437"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	{%endif%}
+	<br />
+	<p>
+	<img src="/static/image/result.gif" widht="95%">
+	</p>
+
+{% endblock %}

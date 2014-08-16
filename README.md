@@ -9,7 +9,7 @@ xwapp
 
 wxapp
 
---bootstrap     bootstrap前端demo
+--bootstrap     django主文件夹
 --bs3           bootstrap3前端demo
 
 --iqtest

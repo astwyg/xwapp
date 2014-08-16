@@ -1,0 +1,77 @@
+# Create your views here.
+# -*- coding: utf-8 -*-
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+from django.contrib import messages
+import random
+
+from .forms import *
+
+
+def start_page(request):
+    if request.method=="POST":
+        print request.POST.get('action','')
+        if request.POST.get('action','')=='start':
+            question_number = 1
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_1,
+                                                                              'theString':Q1,
+                                                                              'question_number':question_number,}))
+        elif request.POST.get('action','')=='1':
+            question_number = 2
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_2,
+                                                                              'theString':Q2,
+                                                                              'question_number':question_number,}))
+        elif request.POST.get('action','')=='2':
+            question_number = 3
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_3,
+                                                                              'theString':Q3,
+                                                                              'question_number':question_number,}))
+        elif request.POST.get('action','')=='3':
+            question_number = 4
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_4,
+                                                                              'theString':Q4,
+                                                                              'question_number':question_number,
+                                                                              'showAD':True,}))
+        elif request.POST.get('action','')=='4':
+            question_number = 5
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_5,
+                                                                              'theString':Q5,
+                                                                              'question_number':question_number,
+                                                                              'showAD':True,}))
+        elif request.POST.get('action','')=='5':
+            question_number = 6
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_6,
+                                                                              'theString':Q6,
+                                                                              'question_number':question_number,
+                                                                              'showAD':True,}))
+        elif request.POST.get('action','')=='6':
+            question_number = 7
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_7,
+                                                                              'theString':Q7,
+                                                                              'question_number':question_number,
+                                                                              'showAD':True,}))
+        elif request.POST.get('action','')=='7':
+            question_number = 8
+            messages.success(request,"第"+str(question_number)+"题，共8题")
+            return render_to_response('agetest/question.html',RequestContext(request,{'form':question_8,
+                                                                              'theString':Q8,
+                                                                              'question_number':question_number,
+                                                                              'showAD':True,}))
+
+        elif request.POST.get('action','')=='8':
+            messages.success(request,"恭喜！测试结束，请点击右上角分享到朋友圈查看结果！")
+            score=str(30+(random.randint(0,200)-100)/10.0)
+            return render_to_response('agetest/result.html',RequestContext(request,{'form':question_8,
+                                                                              'score':score,
+                                                                              }))
+            
+    else:    
+        messages.warning(request,"本测试共8题，大约需要6分钟！")
+        return render_to_response('agetest/start_page.html',RequestContext(request))
