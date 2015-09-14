@@ -1,0 +1,50 @@
+﻿{% extends 'index/mybase.htm' %}
+
+{% block bootstrap3_title %}
+	微信精选
+{% endblock %}
+
+{% block extra_head %}
+<style type="text/css">
+#list-nav{
+	margin-top: 10px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row" id="list-nav">
+	<ul class="nav nav-tabs">
+	   <li class="active"><a href="#">全部</a></li>
+	   <li><a href="#">开发中</a></li>
+	   <li><a href="#">开发中</a></li>
+	   <li><a href="#">开发中</a></li>
+	   <li><a href="#">开发中</a></li>
+	</ul>
+</div>
+<div class="row" id="list-contents">
+	<table class="table table-hover table-striped  ">
+		<thead>
+	      <tr>
+	         <th>{{tag}}</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	{%for ins in contents%}
+		      <tr>
+		         <td>{{ins.0}}</td>
+		      </tr>
+		    {%endfor%}
+	    </tbody>
+	</table>
+</div>
+
+
+
+{% endblock %}
+
+{% block extra_script %} 
+<script>
+	
+</script> 
+{% endblock %}

@@ -1,27 +1,11 @@
 xwapp
-=====
+=========
+关于微信的两个小工具, 文件夹1中包括一个爬虫, 爬取各类公众号信息并进行处理, 分类和显示, 文件夹2中是一个翻译机器人的后端程序.
 
-使用bootstrap+django制作的微信朋友圈网页工具，已经超过10万UIP
+爬虫细节
+---------
+自己写的爬虫, 打算换成scrapy, 但是一直懒得做, 使用SAE的cron服务定时触发, django作为数据展现框架, 存储使用了mySQL和kvdb.
 
-工具运行在SAE平台上，请使用微信浏览器访问http://fronttest.sinaapp.com/ 体验效果。
-
-文件结构和说明如下：
-
-wxapp
-
---bootstrap     django主文件夹
---bs3           bootstrap3前端demo
-
---iqtest
---eqtest
---agetest       三个测试应用，这三个应用已经在一周内拿到40万UIP
-
---xznb          抽奖应用
-
---static        静态文件
---site-packages python第三方包
-
---index.wsgi
---manage.py  	django支持文件
-
-
+体验
+---------
+均已经部署在SAE上, 翻译机器人可以搜索公众号`钟尚的小助手`, 公众号爬虫请访问`wx.ysgh.net`

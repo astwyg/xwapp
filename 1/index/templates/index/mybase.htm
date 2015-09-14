@@ -1,0 +1,172 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+	微信精选
+{% endblock %}
+
+{% block bootstrap3_extra_head %}
+
+	{% block extra_head %}
+    {% endblock %} 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3694809dd3615e483350dc2451405e3a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<style type="text/css">
+html, body{
+	height:100%;
+}
+.navbar-static-bottom .navbar-inner {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 62px; /* .push must be the same height as .footer */
+}
+.navbar-form{
+	margin-bottom:0;
+	margin-top:0;
+}
+.container{
+	min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 55px auto -62px; /* the bottom margin is the negative value of the footer's height */
+}
+
+
+
+</style>
+
+{% endblock %}
+
+{% block bootstrap3_content %}
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+	<div class="navbar-header" style="height:100%;"> 　<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+		<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 --> 
+		<a href="/" class="navbar-brand"><font size="+3">微信精选</font></a> 
+	</div>
+	<div class="collapse navbar-collapse navbar-responsive-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			
+			<!--搜索框-->
+			<form action="/search" class="navbar-form navbar-left" rol="search">
+				<div class="form-group">
+					<input type="text" class="form-control" name="keyword" placeholder="请输入关键词" check-type=""/>
+				</div>
+				<button type="submit" class="btn btn-default btn-sm">搜索</button>
+				<a type="button" class="btn btn-primary navbar-btn" style="margin-left:20px" href="/myaccount/" id="btn-myaccount"> 商务合作 </a> &nbsp;&nbsp; 
+			</form>
+		</ul>
+	</div>
+</div>
+
+
+<div class="container">
+	<!--防止固定导航条挡住最上面--> 
+	{% bootstrap_messages %}
+	
+	{% block content %}
+	{% endblock %} 
+</div>
+<nav class="navbar-static-bottom navbar-inverse">
+	<div class="navbar-inner navbar-content-center">
+		<p class="text-muted credit" style="padding: 10px;"> 京ICP备15002383号-1 &nbsp;&nbsp;本站内容采集自互联网,不代表本站观点,如有侵权,请忍着.&nbsp;&nbsp; 意见建议请联系QQ:233129353<br>
+			<a class="btn btn-link btn-xs" id="url2qr">在手机上查看本页面</a>
+			<a class="btn btn-link btn-xs" href="/about/">关于本站</a> 
+			<a class="btn btn-link btn-xs" href="/co/">商家登陆</a> 
+			<a class="btn btn-link btn-xs" href="http://tongji.baidu.com/web/welcome/ico?s=3694809dd3615e483350dc2451405e3a">百度统计</a> <br>
+			</p>
+	</div>
+</nav>
+
+<!-- 二维码模态框 -->
+<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               本页面二维码
+            </h4>
+         </div>
+         <div class="modal-body">
+            <span>请用手机扫描二维码打开本页面:</span><div id="qrimg">正在生成..</div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+{% endblock %}
+
+{% block bootstrap3_extra_script %} 
+<script src="/static/js/jquery.blockUI.js"></script> 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".thisPage").val(window.location.href);
+		
+		$.get("/getArea?st="+(new Date()).valueOf(),function(result){
+			$(".get_area").html(result);
+		});
+		$.get("/showArea/",function(result){
+			$(".show_area").html(result+'<b class="caret">');
+			if(result != "全部地区"){
+				$(".index_area").html(result+'站');
+			}
+		});
+		$.get("/showArea?enname=1",function(result){
+			$(".show_area_en").val(result);
+		});
+		$(".set_area").click(function(){
+			$.post("/setArea/",
+			{area:$(this).html()},
+			function(data,status){
+			});
+		});
+		$("#url2qr").click(function(){
+			qrcode=$.ajax({url:"/getqrcode",async:false});
+			$("#qrimg").html("<img src='/getqrcode'></img>");
+			$('#qrModal').modal();
+		});
+	});
+</script> 
+<script src="/static/js/bootstrap3-validation.js"></script>
+{% block extra_script %}
+    {% endblock %}
+{% endblock %} 
+<!-- 
+                   _ooOoo_
+                  o8888888o
+                  88" . "88
+                  (| -_- |)
+                  O\  =  /O
+               ____/`---'\____
+             .'  \\|     |//  `.
+            /  \\|||  :  |||//  \
+           /  _||||| -:- |||||-  \
+           |   | \\\  -  /// |   |
+           | \_|  ''\---/''  |   |
+           \  .-\__  `-`  ___/-. /
+         ___`. .'  /--.--\  `. . __
+      ."" '<  `.___\_<|>_/___.'  >'"".
+     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+     \  \ `-.   \_ __\ /__ _/   .-` /  /
+======`-.____`-.___\_____/___.-`____.-'======
+                   `=---='
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         佛祖保佑       永无BUG
+--> 
